@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This does not replace URDF, and is not an extension of URDF.
+    This is a format for representing semantic information about the robot structure.
+    A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
+-->
+<robot name="dofbot_arm">
+    <!--GROUPS: Representation of a set of joints and links. This can be useful for specifying DOF to plan for, defining arms, end effectors, etc-->
+    <!--LINKS: When a link is specified, the parent joint of that link (if it exists) is automatically included-->
+    <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
+    <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
+    <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
+    <group name="dofbot">
+        <joint name="arm_joint_01"/>
+        <joint name="arm_joint_02"/>
+        <joint name="arm_joint_03"/>
+        <joint name="arm_joint_04"/>
+        <joint name="arm_joint_05"/>
+    </group>
+    <group name="grip_group">
+        <link name="rgrip_finger01"/>
+        <link name="rgrip_finger02"/>
+        <link name="lgrip_finger01"/>
+        <link name="lgrip_finger02"/>
+        <link name="lgrip_finger03"/>
+        <link name="rgrip_finger02"/>
+    </group>
+    <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
+    <group_state name="up" group="dofbot">
+        <joint name="arm_joint_01" value="0"/>
+        <joint name="arm_joint_02" value="0"/>
+        <joint name="arm_joint_03" value="0"/>
+        <joint name="arm_joint_04" value="0"/>
+        <joint name="arm_joint_05" value="0"/>
+    </group_state>
+    <group_state name="down" group="dofbot">
+        <joint name="arm_joint_01" value="0"/>
+        <joint name="arm_joint_02" value="-1.5708"/>
+        <joint name="arm_joint_03" value="0"/>
+        <joint name="arm_joint_04" value="0"/>
+        <joint name="arm_joint_05" value="0"/>
+    </group_state>
+    <group_state name="close" group="grip_group">
+        <joint name="grip_joint" value="0"/>
+    </group_state>
+    <group_state name="open" group="grip_group">
+        <joint name="grip_joint" value="-1.54"/>
+    </group_state>
+    <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
+    <end_effector name="gripper" parent_link="arm_link_05" group="grip_group" parent_group="dofbot"/>
+    <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+    <disable_collisions link1="arm_link_01" link2="arm_link_02" reason="Adjacent"/>
+    <disable_collisions link1="arm_link_01" link2="arm_link_03" reason="Never"/>
+    <disable_collisions link1="arm_link_01" link2="arm_link_04" reason="Never"/>
+    <disable_collisions link1="arm_link_01" link2="arm_link_05" reason="Never"/>
+    <disable_collisions link1="arm_link_01" link2="base_link" reason="Adjacent"/>
+    <disable_collisions link1="arm_link_01" link2="lgrip_finger01" reason="Never"/>
+    <disable_collisions link1="arm_link_01" link2="lgrip_finger02" reason="Never"/>
+    <disable_collisions link1="arm_link_01" link2="lgrip_finger03" reason="Never"/>
+    <disable_collisions link1="arm_link_01" link2="rgrip_finger01" reason="Never"/>
+    <disable_collisions link1="arm_link_01" link2="rgrip_finger02" reason="Never"/>
+    <disable_collisions link1="arm_link_01" link2="rgrip_finger03" reason="Never"/>
+    <disable_collisions link1="arm_link_02" link2="arm_link_03" reason="Adjacent"/>
+    <disable_collisions link1="arm_link_02" link2="arm_link_04" reason="Never"/>
+    <disable_collisions link1="arm_link_02" link2="arm_link_05" reason="Never"/>
+    <disable_collisions link1="arm_link_02" link2="base_link" reason="Never"/>
+    <disable_collisions link1="arm_link_02" link2="lgrip_finger01" reason="Never"/>
+    <disable_collisions link1="arm_link_02" link2="lgrip_finger02" reason="Never"/>
+    <disable_collisions link1="arm_link_02" link2="lgrip_finger03" reason="Never"/>
+    <disable_collisions link1="arm_link_02" link2="rgrip_finger01" reason="Never"/>
+    <disable_collisions link1="arm_link_02" link2="rgrip_finger02" reason="Never"/>
+    <disable_collisions link1="arm_link_02" link2="rgrip_finger03" reason="Never"/>
+    <disable_collisions link1="arm_link_03" link2="arm_link_04" reason="Adjacent"/>
+    <disable_collisions link1="arm_link_03" link2="arm_link_05" reason="Never"/>
+    <disable_collisions link1="arm_link_03" link2="base_link" reason="Never"/>
+    <disable_collisions link1="arm_link_03" link2="lgrip_finger01" reason="Never"/>
+    <disable_collisions link1="arm_link_03" link2="lgrip_finger02" reason="Never"/>
+    <disable_collisions link1="arm_link_03" link2="lgrip_finger03" reason="Never"/>
+    <disable_collisions link1="arm_link_03" link2="rgrip_finger01" reason="Never"/>
+    <disable_collisions link1="arm_link_03" link2="rgrip_finger02" reason="Never"/>
+    <disable_collisions link1="arm_link_03" link2="rgrip_finger03" reason="Never"/>
+    <disable_collisions link1="arm_link_04" link2="arm_link_05" reason="Adjacent"/>
+    <disable_collisions link1="arm_link_04" link2="lgrip_finger01" reason="Never"/>
+    <disable_collisions link1="arm_link_04" link2="lgrip_finger02" reason="Never"/>
+    <disable_collisions link1="arm_link_04" link2="lgrip_finger03" reason="Never"/>
+    <disable_collisions link1="arm_link_04" link2="rgrip_finger01" reason="Never"/>
+    <disable_collisions link1="arm_link_04" link2="rgrip_finger02" reason="Never"/>
+    <disable_collisions link1="arm_link_04" link2="rgrip_finger03" reason="Never"/>
+    <disable_collisions link1="arm_link_05" link2="lgrip_finger01" reason="Adjacent"/>
+    <disable_collisions link1="arm_link_05" link2="lgrip_finger02" reason="Never"/>
+    <disable_collisions link1="arm_link_05" link2="lgrip_finger03" reason="Adjacent"/>
+    <disable_collisions link1="arm_link_05" link2="rgrip_finger01" reason="Adjacent"/>
+    <disable_collisions link1="arm_link_05" link2="rgrip_finger02" reason="Never"/>
+    <disable_collisions link1="arm_link_05" link2="rgrip_finger03" reason="Adjacent"/>
+    <disable_collisions link1="lgrip_finger01" link2="lgrip_finger02" reason="Adjacent"/>
+    <disable_collisions link1="lgrip_finger01" link2="lgrip_finger03" reason="Never"/>
+    <disable_collisions link1="lgrip_finger01" link2="rgrip_finger01" reason="Always"/>
+    <disable_collisions link1="lgrip_finger01" link2="rgrip_finger02" reason="Never"/>
+    <disable_collisions link1="lgrip_finger01" link2="rgrip_finger03" reason="Never"/>
+    <disable_collisions link1="lgrip_finger02" link2="lgrip_finger03" reason="Default"/>
+    <disable_collisions link1="lgrip_finger02" link2="rgrip_finger01" reason="Never"/>
+    <disable_collisions link1="lgrip_finger02" link2="rgrip_finger02" reason="Never"/>
+    <disable_collisions link1="lgrip_finger02" link2="rgrip_finger03" reason="Never"/>
+    <disable_collisions link1="lgrip_finger03" link2="rgrip_finger01" reason="Never"/>
+    <disable_collisions link1="lgrip_finger03" link2="rgrip_finger02" reason="Never"/>
+    <disable_collisions link1="lgrip_finger03" link2="rgrip_finger03" reason="Never"/>
+    <disable_collisions link1="rgrip_finger01" link2="rgrip_finger02" reason="Adjacent"/>
+    <disable_collisions link1="rgrip_finger01" link2="rgrip_finger03" reason="Never"/>
+    <disable_collisions link1="rgrip_finger02" link2="rgrip_finger03" reason="Default"/>
+</robot>

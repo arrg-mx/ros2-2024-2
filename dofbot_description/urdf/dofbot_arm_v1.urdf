@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<robot name="arm">
+    <!--Base_Link declaration-->
+    <link name="base_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://dofbot_description/meshes/dofbot_v1/visual/base_link.STL"/>
+            </geometry>
+            <material name="EerieBlack">
+                <!--"151, 170, 174" - "#97AAAE" - "Cadet gray"-->
+                <color rgba="0.1294117647058824 0.1450980392156863 0.1607843137254902 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://dofbot_description/meshes/dofbot_v1/visual/base_link.STL"/>
+            </geometry>
+        </collision>
+    </link>
+    <!--Arm_Link_01 declaration-->
+    <link name="arm_link_01">
+        <visual name="">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://dofbot_description/meshes/dofbot_v1/visual/link1.STL"/>
+            </geometry>
+            <material name="PigmentGreen">
+                <!--"0, 160, 60" - "#00A03C" - "Pigment green"-->
+                <color rgba="0 0.627450980392157 0.235294117647059 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://dofbot_description/meshes/dofbot_v1/visual/link1.STL"/>
+            </geometry>
+        </collision>
+    </link>
+    <!--Arm_Joint_01 declaration (Base_Link -> Arm_Link_01) -->
+    <joint name="arm_joint_01" type="revolute">
+        <origin xyz="0 0 0.06605" rpy="-0.010805 0 0" />
+        <parent link="base_link" />
+        <child link="arm_link_01" />
+        <axis xyz="0 0 1" />
+        <limit effort="30" velocity="1.0" lower="-1.5708" upper="1.5708"/>
+    </joint>
+    <!--Arm_Link_02 declaration-->
+    <link name="arm_link_02">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://dofbot_description/meshes/dofbot_v1/visual/link2.STL" />
+            </geometry>
+            <material name="PigmentGreen"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://dofbot_description/meshes/dofbot_v1/visual/link2.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <!--Arm_Joint_02 declaration (Arm_Link_01 -> Arm_Link_02) -->
+    <joint name="arm_joint_02" type="revolute">
+        <origin xyz="0 -0.00031873 0.04145" rpy="0 1.5708 0" />
+        <parent link="arm_link_01" />
+        <child link="arm_link_02" />
+        <axis xyz="0 0 1" />
+        <limit effort="30" velocity="1.0" lower="-1.5708" upper="1.5708"/>
+    </joint>
+    <!--Arm_Link_03 declaration-->
+    <link name="arm_link_03">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://dofbot_description/meshes/dofbot_v1/visual/link3.STL" />
+            </geometry>
+            <material name="PigmentGreen"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://dofbot_description/meshes/dofbot_v1/visual/link3.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <!--Arm_Joint_03 declaration (Arm_Link_02 -> Arm_Link_03) -->
+    <joint name="arm_joint_03" type="revolute">
+        <origin xyz="-0.08285 0 0" rpy="0 0 0" />
+        <parent link="arm_link_02" />
+        <child link="arm_link_03" />
+        <axis xyz="0 0 1" />
+        <limit effort="30" velocity="1.0" lower="-1.5708" upper="1.5708"/>
+    </joint>
+    <!--Arm_Link_04 declaration-->
+    <link name="arm_link_04">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://dofbot_description/meshes/dofbot_v1/visual/link4.STL" />
+            </geometry>
+            <material name="PigmentGreen"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://dofbot_description/meshes/dofbot_v1/visual/link4.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <!--Arm_Joint_04 declaration (Arm_Link_03 -> Arm_Link_04) -->
+    <joint name="arm_joint_04" type="revolute">
+        <origin xyz="-0.08285 0 0" rpy="0 0 0.0083081" />
+        <parent link="arm_link_03" />
+        <child link="arm_link_04" />
+        <axis xyz="0 0 1" />
+        <limit effort="30" velocity="1.0" lower="-1.5708" upper="1.5708"/>
+    </joint>
+    <!--Arm_Link_05 declaration-->
+    <link name="arm_link_05">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://dofbot_description/meshes/dofbot_v1/visual/link5.STL"/>
+            </geometry>
+            <material name="EerieBlack"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://dofbot_description/meshes/dofbot_v1/visual/link5.STL"/>
+            </geometry>
+        </collision>
+    </link>
+    <!--Arm_Joint_05 declaration (Arm_Link_04 -> Arm_Link_05) -->
+    <joint name="arm_joint_05" type="revolute">
+        <origin xyz="-0.07385 -0.001 0" rpy="0 -1.57 0"/>
+        <axis xyz="0 0 1"/>
+        <parent link="arm_link_04"/>
+        <child link="arm_link_05"/>
+        <limit effort="30" velocity="1.0" lower="-1.5708" upper="3.1416"/>
+    </joint>
+</robot>
