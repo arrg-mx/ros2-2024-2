@@ -24,7 +24,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'dofbot_node = dofbot_ctrl.dofbot_node:main'
+            'dofbot_node = dofbot_ctrl.dofbot_node:main',
+            'dofbot_arm_ctrl = dofbot_ctrl.dofbot_controller:main'
         ],
     },
 )
