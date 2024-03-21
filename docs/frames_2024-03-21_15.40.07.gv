@@ -1,0 +1,18 @@
+digraph G {
+"arm_link_04" -> "mono_link"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"arm_link_03" -> "arm_link_04"[label=" Broadcaster: default_authority\nAverage rate: 10.2\nBuffer length: 5.0\nMost recent transform: 1711057207.391101\nOldest transform: 1711057202.391242\n"];
+"base_link" -> "arm_link_01"[label=" Broadcaster: default_authority\nAverage rate: 10.2\nBuffer length: 5.0\nMost recent transform: 1711057207.391101\nOldest transform: 1711057202.391242\n"];
+"arm_link_01" -> "arm_link_02"[label=" Broadcaster: default_authority\nAverage rate: 10.2\nBuffer length: 5.0\nMost recent transform: 1711057207.391101\nOldest transform: 1711057202.391242\n"];
+"arm_link_02" -> "arm_link_03"[label=" Broadcaster: default_authority\nAverage rate: 10.2\nBuffer length: 5.0\nMost recent transform: 1711057207.391101\nOldest transform: 1711057202.391242\n"];
+"arm_link_04" -> "arm_link_05"[label=" Broadcaster: default_authority\nAverage rate: 10.2\nBuffer length: 5.0\nMost recent transform: 1711057207.391101\nOldest transform: 1711057202.391242\n"];
+"arm_link_05" -> "rgrip_finger01"[label=" Broadcaster: default_authority\nAverage rate: 10.2\nBuffer length: 5.0\nMost recent transform: 1711057207.391101\nOldest transform: 1711057202.391242\n"];
+"arm_link_05" -> "lgrip_finger01"[label=" Broadcaster: default_authority\nAverage rate: 10.2\nBuffer length: 5.0\nMost recent transform: 1711057207.391101\nOldest transform: 1711057202.391242\n"];
+"lgrip_finger01" -> "lgrip_finger02"[label=" Broadcaster: default_authority\nAverage rate: 10.2\nBuffer length: 5.0\nMost recent transform: 1711057207.391101\nOldest transform: 1711057202.391242\n"];
+"arm_link_05" -> "lgrip_finger03"[label=" Broadcaster: default_authority\nAverage rate: 10.2\nBuffer length: 5.0\nMost recent transform: 1711057207.391101\nOldest transform: 1711057202.391242\n"];
+"rgrip_finger01" -> "rgrip_finger02"[label=" Broadcaster: default_authority\nAverage rate: 10.2\nBuffer length: 5.0\nMost recent transform: 1711057207.391101\nOldest transform: 1711057202.391242\n"];
+"arm_link_05" -> "rgrip_finger03"[label=" Broadcaster: default_authority\nAverage rate: 10.2\nBuffer length: 5.0\nMost recent transform: 1711057207.391101\nOldest transform: 1711057202.391242\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1711057207.4011066"[ shape=plaintext ] ;
+}->"base_link";
+}
