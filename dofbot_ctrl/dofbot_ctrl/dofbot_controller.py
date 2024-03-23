@@ -11,10 +11,11 @@ class DofbotArmCtrl(Node):
         super().__init__(node_name)
         # self._gripper_status = self.create_publisher(JointState, '/joint_states', 10)
         self._gripper_status_pub = self.create_publisher(String, '/gripper_status', 10)
-        self._joint_states_sub = self.create_subscription(String, '/joint_states', self._on_joint_states_callback, 10)
+        self._joint_states_sub = self.create_subscription(JointState, '/joint_states', self._on_joint_states_callback, 10)
         self.tol = 0.0174533 # rads = 1 grado
+        self.get_logger().debug(f"Node '{node_name}' initialized")
 
-    def _on_joint_states_callback(self, joint_state_msg):
+    def _on_joint_states_callback(self, joint_state_msg: JointState):
         gripper_status = String()
         indx_gripper = joint_state_msg.name.index('grip_joint')
         link_value = joint_state_msg.position[indx_gripper]
